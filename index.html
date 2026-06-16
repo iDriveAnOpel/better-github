@@ -3,6 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User/better-github-showcase</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background-color: #0d1117; color: #c9d1d9; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+        .border-gray { border-color: #30363d; }
+        .bg-secondary { background-color: #161b22; }
+        .btn-github { background-color: #21262d; border: 1px solid #30363d; }
+        .btn-github:hover { background-color: #30363d; border-color: #8b949e; }
+        .text-blue-link { color: #58a6ff; }
+        .file-row:hover { background-color: #161b22; cursor: pointer; }
+        #file-modal { display: none; }
+    </style>
+</head>
+<body class="pb-10">
+
+    <!-- Header -->
+    <header class="bg-secondary py-4 px-8 flex items-center justify-between border-b border-gray">
+        <div class="flex items-center gap-4">
+            <i class="fab fa-github text-3xl text-white cursor-pointer"></i>
+            <div class="relative">
+                <input type="text" placeholder="Search..." class="bg-transparent border border-gray rounded-md px-3 py-1 text-sm w-64 focus:outline-none focus:border-blue-500">
+            </div>
+        </div>
+        <div class="flex items-center gap-4 text-gray-400">
+            <i class="far fa-bell"></i>
+            <i class="fas fa-plus"></i>
+            <div class="w-6 h-6 bg-gray-600 rounded-full"></div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-8 mt-6">
+        <!-- Breadcrumbs -->
+        <div class="flex items-center gap-2 text-xl mb-4">
+            <i class="far fa-bookmark text-gray-400"></i>
+            <a href="#" class="text-blue-link">username</a> <span class="text-gray-500">/</span> <a href="#" class="text-blue-link font-bold">repository-name</a>
+        </div>
+
+        <!-- File Explorer -->
+        <div class="border border-gray rounded-md overflow-hidden bg-transparent">
+            <div class="bg-secondary p-4 flex justify-between items-center border-b border-gray text-sm">
+                <div class="flex items-center gap-3">
+                    <div class="w-6 h-6 bg-blue-500 rounded-full"></div>
+                    <span class="font-bold">username</span>
+                    <span class="text-gray-400">Initial project structure</span>
+                </div>
+            </div>
+            <table class="w-full text-sm">
+                <tr class="file-row border-b border-gray" onclick="openFile('src', 'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKMGpxx6B37LXY4/giphy.gif')">
+                    <td class="p-3 w-8 text-center"><i class="fas fa-folder text-blue-300"></i></td>
+                    <td class="p-3 font-medium">src</td>
+                    <td class="p-3 text-gray-400">Add core logic</td>
+                    <td class="p-3 text-right text-gray-400">2 days ago</td>
+                </tr>
+                <tr class="file-row border-b border-gray" onclick="openFile('index.html', 'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3ZhcHoxdmh6dmh6dmh6dmh6dmh6dmh6dmh6dmh6dmh6dmh6dmh6diZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/26tn33aiTi1jkl6H6/giphy.gif')">
+                    <td class="p-3 w-8 text-center"><i class="far fa-file-code text-gray-400"></i></td>
+                    <td class="p-3 font-medium">index.html</td>
+                    <td class="p-3 text-gray-400">Setup base layout</td>
+                    <td class="p-3 text-right text-gray-400">1 hour ago</td>
+                </tr>
+                <tr class="file-row" onclick="openFile('README.md', 'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbmZueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l0HlMG1W8f2S0/giphy.gif')">
+                    <td class="p-3 w-8 text-center"><i class="far fa-file-alt text-gray-400"></i></td>
+                    <td class="p-3 font-medium">README.md</td>
+                    <td class="p-3 text-gray-400">Update documentation</td>
+                    <td class="p-3 text-right text-gray-400">5 mins ago</td>
+                </tr>
+            </table>
+        </div>
+    </main>
+
+    <!-- File Viewer Modal -->
+    <div id="file-modal" class="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center p-4">
+        <div class="bg-secondary w-full max-w-4xl border border-gray rounded-lg shadow-2xl overflow-hidden">
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between p-4 border-b border-gray">
+                <div class="flex items-center gap-2">
+                    <i class="far fa-file-alt text-gray-400"></i>
+                    <span id="modal-filename" class="font-bold text-sm">filename</span>
+                </div>
+                <button onclick="closeFile()" class="text-gray-400 hover:text-white text-xl">&times;</button>
+            </div>
+            <!-- Modal Content -->
+            <div class="p-8 flex justify-center bg-black">
+                <img id="modal-gif" src="" alt="File Preview" class="max-w-full rounded shadow-lg">
+            </div>
+            <!-- Modal Footer -->
+            <div class="p-3 bg-secondary border-t border-gray text-right">
+                <button onclick="closeFile()" class="btn-github px-4 py-1 rounded text-sm font-semibold">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openFile(name, gifUrl) {
+            const modal = document.getElementById('file-modal');
+            const modalName = document.getElementById('modal-filename');
+            const modalImg = document.getElementById('modal-gif');
+
+            modalName.innerText = name;
+            modalImg.src = gifUrl;
+            modal.style.display = 'flex';
+            
+            // Prevent body scroll
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeFile() {
+            const modal = document.getElementById('file-modal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close on clicking outside the box
+        window.onclick = function(event) {
+            const modal = document.getElementById('file-modal');
+            if (event.target == modal) {
+                closeFile();
+            }
+        }
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>username/repository-name - GitHub Clone</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
