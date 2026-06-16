@@ -46,9 +46,9 @@
     <main class="max-w-5xl mx-auto px-8 mt-8">
         <div class="flex items-center gap-2 text-xl mb-6">
             <i class="far fa-bookmark text-gray-400"></i>
-            <a href="#" id="repo-owner" class="text-blue-link">UniGit</a> 
+            <a href="#" id="repo-owner" class="text-blue-link">username</a> 
             <span class="text-gray-500">/</span> 
-            <a href="#" id="repo-title" class="text-blue-link font-bold">uni-git-demo</a>
+            <a href="#" id="repo-title" class="text-blue-link font-bold">repository-name</a>
             <span class="text-xs border border-gray px-2 py-0.5 rounded-full text-gray-400 font-medium ml-2">Public</span>
         </div>
 
@@ -57,48 +57,48 @@
                 <div class="flex items-center gap-3">
                     <div class="w-6 h-6 bg-green-500 rounded-full"></div>
                     <span id="commit-author" class="font-bold">username</span>
-                    <span class="text-gray-400">Fetched live assets from /files folder</span>
+                    <span class="text-gray-400">Fixed styles and updated README</span>
                 </div>
                 <span class="text-gray-400">Just now</span>
             </div>
             <table class="w-full text-sm">
-                <tr class="file-row border-b border-gray" onclick="openRealFile('model.3d', 'gif')">
+                <tr class="file-row border-b border-gray" onclick="openFile('model.3d', 'gif', 'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKMGpxx6B37LXY4/giphy.gif')">
                     <td class="p-3 w-8 text-center"><i class="fas fa-cube text-gray-400"></i></td>
                     <td class="p-3 font-medium">model.3d</td>
                     <td class="p-3 text-gray-400">3D Asset presentation model</td>
                     <td class="p-3 text-right text-gray-400">2 days ago</td>
                 </tr>
-                <tr class="file-row border-b border-gray" onclick="openRealFile('song.mp3', 'audio')">
+                <tr class="file-row border-b border-gray" onclick="openFile('song.mp3', 'audio', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3')">
                     <td class="p-3 w-8 text-center"><i class="fas fa-music text-gray-400"></i></td>
                     <td class="p-3 font-medium">song.mp3</td>
                     <td class="p-3 text-gray-400">Project promotional soundtrack</td>
                     <td class="p-3 text-right text-gray-400">4 hours ago</td>
                 </tr>
-                <tr class="file-row border-b border-gray" onclick="openRealFile('video.mp4', 'video')">
+                <tr class="file-row border-b border-gray" onclick="openFile('video.mp4', 'video', 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4')">
                     <td class="p-3 w-8 text-center"><i class="fas fa-video text-gray-400"></i></td>
                     <td class="p-3 font-medium">video.mp4</td>
                     <td class="p-3 text-gray-400">Application features walkthrough clip</td>
                     <td class="p-3 text-right text-gray-400">3 hours ago</td>
                 </tr>
-                <tr class="file-row border-b border-gray" onclick="openRealFile('presentation.pptx', 'pdf')">
+                <tr class="file-row border-b border-gray" onclick="openFile('presentation.pptx', 'pdf', 'https://www.w3.org/WAI/gatherings/tpac2017/slides/accessibility-intro.pdf')">
                     <td class="p-3 w-8 text-center"><i class="fas fa-file-powerpoint text-gray-400"></i></td>
                     <td class="p-3 font-medium">presentation.pptx</td>
                     <td class="p-3 text-gray-400">Project pitch and summary deck</td>
                     <td class="p-3 text-right text-gray-400">2 hours ago</td>
                 </tr>
-                <tr class="file-row border-b border-gray" onclick="openRealFile('document.pdf', 'pdf')">
+                <tr class="file-row border-b border-gray" onclick="openFile('document.pdf', 'pdf', 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf')">
                     <td class="p-3 w-8 text-center"><i class="fas fa-file-pdf text-gray-400"></i></td>
                     <td class="p-3 font-medium">document.pdf</td>
                     <td class="p-3 text-gray-400">System specification documentation</td>
                     <td class="p-3 text-right text-gray-400">5 hours ago</td>
                 </tr>
-                <tr class="file-row border-b border-gray" onclick="openRealFile('index.html', 'code')">
+                <tr class="file-row border-b border-gray" onclick="openFile('index.html', 'code', '')">
                     <td class="p-3 w-8 text-center"><i class="far fa-file-code text-gray-400"></i></td>
                     <td class="p-3 font-medium">index.html</td>
                     <td class="p-3 text-gray-400">Initial layout setup</td>
                     <td class="p-3 text-right text-gray-400">1 hour ago</td>
                 </tr>
-                <tr class="file-row" onclick="openRealFile('README.md', 'readme')">
+                <tr class="file-row" onclick="openFile('README.md', 'readme', '')">
                     <td class="p-3 w-8 text-center"><i class="far fa-file-alt text-gray-400"></i></td>
                     <td class="p-3 font-medium">README.md</td>
                     <td class="p-3 text-gray-400">Update project description</td>
@@ -112,8 +112,20 @@
                 <i class="fas fa-list text-xs text-gray-400"></i>
                 <span class="font-bold text-sm">README.md</span>
             </div>
-            <div id="readme-source-content" class="p-10 text-gray-400">
-                Loading live preview from GitHub repository...
+            <div id="readme-source-content" class="p-10">
+                <h1 class="text-3xl font-bold border-b border-gray pb-2 mb-4">My Awesome Repository</h1>
+                
+                <p class="mb-4 text-gray-300">Welcome to this clone of the GitHub UI. This section is editable directly in the HTML code.</p>
+
+                <h2 class="text-xl font-bold border-b border-gray pb-2 mb-4">How to use</h2>
+                <ul class="list-disc ml-6 mb-4 space-y-2 text-gray-300">
+                    <li>Click on any file row above to see a GIF preview, dynamic multimedia player, or code layout.</li>
+                    <li>Edit the text inside the HTML <code>&lt;div&gt;</code> to change this README instantly on both screens.</li>
+                    <li>Swap out the element source URLs directly in the tables to load your custom tracks.</li>
+                </ul>
+
+                <h2 class="text-xl font-bold border-b border-gray pb-2 mb-4">Tech Stack</h2>
+                <p class="text-gray-300">Tailwind CSS, FontAwesome, and Vanilla JavaScript.</p>
             </div>
         </div>
     </main>
@@ -128,8 +140,6 @@
                 <button onclick="closeFile()" class="text-gray-400 hover:text-white px-2 text-2xl">&times;</button>
             </div>
             <div class="p-6 bg-black min-h-[300px] flex justify-center items-center overflow-auto max-h-[75vh]">
-                <div id="modal-status" class="text-gray-400 text-sm font-mono hidden">Loading file data from repository...</div>
-                
                 <div id="gif-container" class="w-full text-center hidden">
                     <img id="modal-gif" src="" alt="File Preview" class="max-w-full max-h-[70vh] mx-auto rounded">
                 </div>
@@ -154,23 +164,103 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <script>
-        // ==========================================
-        //  CRITICAL: CONFIGURE YOUR REPO INFO HERE!
-        // ==========================================
-        const GITHUB_USERNAME = 'iDriveAnOpel';       // Put your exact GitHub Username here
-        const REPO_NAME = 'better-github';       // Put your exact GitHub Repository Name here
-        const BRANCH = 'main';                  // Your branch name (usually 'main' or 'master')
-
-        // Base URLs for GitHub Content Retrieval APIs
-        const rawContentBaseUrl = `https://raw.githubusercontent.com/${GITHUB_USERNAME}/${REPO_NAME}/${BRANCH}/files`;
-
+        // Synchronize interface header text variables using document title content strings
         window.addEventListener('DOMContentLoaded', () => {
-            // Setup page branding based on configurations automatically
-            document.getElementById('repo-owner').innerText = GITHUB_USERNAME;
-            document.getElementById('repo-title').innerText = REPO_NAME;
-            document.getElementById('commit-author').innerText = GITHUB_USERNAME;
-            document.title = `${GITHUB_USERNAME}/${REPO_NAME}`;
-
-            // Initialize Page Preview: Instantly download 'files/README.md' to populate bottom page section
-            fetchLiveReadmeFile();
+            const pageTitle = document.title;
+            if (pageTitle.includes('/')) {
+                const parts = pageTitle.split('/');
+                const ownerName = parts[0].trim();
+                const repoName = parts[1].trim();
+                
+                document.getElementById('repo-owner').innerText = ownerName;
+                document.getElementById('repo-title').innerText = repoName;
+                document.getElementById('commit-author').innerText = ownerName;
+            }
         });
+
+        function openFile(name, type, targetUrl) {
+            const modal = document.getElementById('file-modal');
+            const modalName = document.getElementById('modal-filename');
+            
+            // Collect structural modal UI display segments
+            const gifContainer = document.getElementById('gif-container');
+            const modalImg = document.getElementById('modal-gif');
+            const codeContainer = document.getElementById('modal-code-container');
+            const codeElement = document.getElementById('modal-code');
+            const readmeContainer = document.getElementById('modal-readme-container');
+            const audioContainer = document.getElementById('audio-container');
+            const modalAudio = document.getElementById('modal-audio');
+            const videoContainer = document.getElementById('video-container');
+            const modalVideo = document.getElementById('modal-video');
+            const pdfContainer = document.getElementById('pdf-container');
+            const modalPdf = document.getElementById('modal-pdf');
+
+            modalName.innerText = name;
+            
+            // Collapse all visualization containers before selective re-routing
+            gifContainer.classList.add('hidden');
+            codeContainer.classList.add('hidden');
+            readmeContainer.classList.add('hidden');
+            audioContainer.classList.add('hidden');
+            videoContainer.classList.add('hidden');
+            pdfContainer.classList.add('hidden');
+
+            // Explicit clean-ups to halt background tracks when switching media windows
+            modalAudio.pause(); modalAudio.src = "";
+            modalVideo.pause(); modalVideo.src = "";
+            modalPdf.src = "";
+
+            if (type === 'code') {
+                codeContainer.classList.remove('hidden');
+                const currentHtmlCode = document.documentElement.outerHTML;
+                codeElement.textContent = currentHtmlCode;
+                Prism.highlightElement(codeElement);
+
+            } else if (type === 'readme') {
+                readmeContainer.classList.remove('hidden');
+                const sourceContent = document.getElementById('readme-source-content').innerHTML;
+                readmeContainer.innerHTML = sourceContent;
+
+            } else if (type === 'audio') {
+                audioContainer.classList.remove('hidden');
+                modalAudio.src = targetUrl;
+                modalAudio.load();
+
+            } else if (type === 'video') {
+                videoContainer.classList.remove('hidden');
+                modalVideo.src = targetUrl;
+                modalVideo.load();
+
+            } else if (type === 'pdf') {
+                pdfContainer.classList.remove('hidden');
+                modalPdf.src = targetUrl;
+
+            } else {
+                gifContainer.classList.remove('hidden');
+                modalImg.src = targetUrl;
+            }
+
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeFile() {
+            const modal = document.getElementById('file-modal');
+            
+            // Safely stop background asset playback routines during user exit
+            document.getElementById('modal-audio').pause();
+            document.getElementById('modal-video').pause();
+            
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('file-modal');
+            if (event.target == modal) {
+                closeFile();
+            }
+        }
+    </script>
+</body>
+</html>
