@@ -97,7 +97,7 @@
                     <td class="p-3 text-gray-400">Initial layout setup</td>
                     <td class="p-3 text-right text-gray-400">1 hour ago</td>
                 </tr>
-                <tr class="file-row" onclick="openFile('README.md', 'readme', '')">
+                <tr class="file-row" onclick="openFile('README.md', 'readme', 'https://eeyiiicptcfnevxkbovy.supabase.co/storage/v1/object/public/ShowcaseFiles/README.md')">
                     <td class="p-3 w-8 text-center"><i class="far fa-file-alt text-gray-400"></i></td>
                     <td class="p-3 font-medium">README.md</td>
                     <td class="p-3 text-gray-400">Update project description</td>
@@ -112,16 +112,7 @@
                 <span class="font-bold text-sm">README.md</span>
             </div>
             <div id="readme-source-content" class="p-10">
-                <h1 class="text-3xl font-bold border-b border-gray pb-2 mb-4">My Awesome Repository</h1>
-                <p class="mb-4 text-gray-300">Welcome to this clone of the GitHub UI. This section is editable directly in the HTML code.</p>
-                <h2 class="text-xl font-bold border-b border-gray pb-2 mb-4">How to use</h2>
-                <ul class="list-disc ml-6 mb-4 space-y-2 text-gray-300">
-                    <li>Click on any file row above to see a GIF preview, dynamic multimedia player, or code layout.</li>
-                    <li>Edit the text inside the HTML <code>&lt;div&gt;</code> to change this README instantly on both screens.</li>
-                    <li>Swap out the element source URLs directly in the tables to load your custom tracks.</li>
-                </ul>
-                <h2 class="text-xl font-bold border-b border-gray pb-2 mb-4">Tech Stack</h2>
-                <p class="text-gray-300">Tailwind CSS, FontAwesome, and Vanilla JavaScript.</p>
+                <p class="text-gray-400 italic animate-pulse">Syncing dynamic repository overview documentation...</p>
             </div>
         </div>
     </main>
@@ -163,7 +154,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <script>
-        // Automatic runtime text sync setup
+        // Automatic runtime asset sync initialization
         window.addEventListener('DOMContentLoaded', () => {
             const pageTitle = document.title;
             if (pageTitle.includes('/')) {
@@ -174,9 +165,31 @@
                 document.getElementById('repo-owner').innerText = ownerName;
                 document.getElementById('repo-title').innerText = repoName;
             }
-            // Explicit branding synchronization requirement rule fulfillment
             document.getElementById('commit-author').innerText = "The UniGit Team";
+
+            // Automatically pull Supabase markdown content into home dashboard readme window
+            const readmeMainBox = document.getElementById('readme-source-content');
+            if (readmeMainBox) {
+                fetch('https://eeyiiicptcfnevxkbovy.supabase.co/storage/v1/object/public/ShowcaseFiles/README.md')
+                    .then(response => {
+                        if (!response.ok) throw new Error('Data fetch failed');
+                        return response.text();
+                    })
+                    .then(text => {
+                        readmeMainBox.innerHTML = `<pre class="whitespace-pre-wrap text-gray-300 font-sans leading-relaxed text-sm">${escapeHTML(text)}</pre>`;
+                    })
+                    .catch(err => {
+                        readmeMainBox.innerHTML = `<p class="text-gray-400 italic">Welcome to uni-git-demo. Open README.md row asset to process cloud markdown engines.</p>`;
+                    });
+            }
         });
+
+        // Helper function to safely escape raw strings against execution injection breaks
+        function escapeHTML(str) {
+            return str.replace(/[&<>'"]/g, 
+                tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
+            );
+        }
 
         function openFile(name, type, targetUrl) {
             const modal = document.getElementById('file-modal');
@@ -221,8 +234,19 @@
                 Prism.highlightElement(codeElement);
             } else if (type === 'readme') {
                 readmeContainer.classList.remove('hidden');
-                const sourceContent = document.getElementById('readme-source-content').innerHTML;
-                readmeContainer.innerHTML = sourceContent;
+                readmeContainer.innerHTML = `<p class="text-gray-400 italic animate-pulse">Fetching markdown architecture live from Supabase...</p>`;
+                
+                fetch(targetUrl)
+                    .then(response => {
+                        if (!response.ok) throw new Error('Could not pull markdown resource from cloud bucket.');
+                        return response.text();
+                    })
+                    .then(markdownText => {
+                        readmeContainer.innerHTML = `<pre class="whitespace-pre-wrap font-sans text-gray-200 bg-transparent leading-relaxed">${escapeHTML(markdownText)}</pre>`;
+                    })
+                    .catch(error => {
+                        readmeContainer.innerHTML = `<p class="text-red-400 font-mono text-sm">Error parsing remote source: ${error.message}</p>`;
+                    });
             } else if (type === 'audio') {
                 audioContainer.classList.remove('hidden');
                 modalAudio.src = targetUrl;
