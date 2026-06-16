@@ -62,11 +62,29 @@
                 <span class="text-gray-400">Just now</span>
             </div>
             <table class="w-full text-sm">
-                <tr class="file-row border-b border-gray" onclick="openFile('src', 'gif', 'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKMGpxx6B37LXY4/giphy.gif')">
-                    <td class="p-3 w-8 text-center"><i class="fas fa-folder text-blue-300"></i></td>
-                    <td class="p-3 font-medium">src</td>
-                    <td class="p-3 text-gray-400">Main application logic</td>
+                <tr class="file-row border-b border-gray" onclick="openFile('model.3d', 'gif', 'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKMGpxx6B37LXY4/giphy.gif')">
+                    <td class="p-3 w-8 text-center"><i class="fas fa-cube text-yellow-500"></i></td>
+                    <td class="p-3 font-medium">model.3d</td>
+                    <td class="p-3 text-gray-400">3D Asset presentation model</td>
                     <td class="p-3 text-right text-gray-400">2 days ago</td>
+                </tr>
+                <tr class="file-row border-b border-gray" onclick="openFile('song.mp3', 'audio', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3')">
+                    <td class="p-3 w-8 text-center"><i class="fas fa-music text-purple-400"></i></td>
+                    <td class="p-3 font-medium">song.mp3</td>
+                    <td class="p-3 text-gray-400">Project promotional soundtrack</td>
+                    <td class="p-3 text-right text-gray-400">4 hours ago</td>
+                </tr>
+                <tr class="file-row border-b border-gray" onclick="openFile('video.mp4', 'video', 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4')">
+                    <td class="p-3 w-8 text-center"><i class="fas fa-video text-red-400"></i></td>
+                    <td class="p-3 font-medium">video.mp4</td>
+                    <td class="p-3 text-gray-400">Application features walkthrough clip</td>
+                    <td class="p-3 text-right text-gray-400">3 hours ago</td>
+                </tr>
+                <tr class="file-row border-b border-gray" onclick="openFile('document.pdf', 'pdf', 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf')">
+                    <td class="p-3 w-8 text-center"><i class="fas fa-file-pdf text-red-500"></i></td>
+                    <td class="p-3 font-medium">document.pdf</td>
+                    <td class="p-3 text-gray-400">System specification documentation</td>
+                    <td class="p-3 text-right text-gray-400">5 hours ago</td>
                 </tr>
                 <tr class="file-row border-b border-gray" onclick="openFile('index.html', 'code', '')">
                     <td class="p-3 w-8 text-center"><i class="far fa-file-code text-gray-400"></i></td>
@@ -95,9 +113,9 @@
 
                 <h2 class="text-xl font-bold border-b border-gray pb-2 mb-4">How to use</h2>
                 <ul class="list-disc ml-6 mb-4 space-y-2 text-gray-300">
-                    <li>Click on any file row above to see a GIF preview or code.</li>
-                    <li>Edit the text inside the HTML <code>&lt;div&gt;</code> to change this README.</li>
-                    <li>Swap out the GIF URLs in the JavaScript to customize the "file" contents.</li>
+                    <li>Click on any file row above to see a GIF preview, dynamic multimedia player, or code layout.</li>
+                    <li>Edit the text inside the HTML <code>&lt;div&gt;</code> to change this README instantly on both screens.</li>
+                    <li>Swap out the element source URLs directly in the tables to load your custom tracks.</li>
                 </ul>
 
                 <h2 class="text-xl font-bold border-b border-gray pb-2 mb-4">Tech Stack</h2>
@@ -115,12 +133,22 @@
                 </div>
                 <button onclick="closeFile()" class="text-gray-400 hover:text-white px-2 text-2xl">&times;</button>
             </div>
-            <div class="p-6 bg-black min-h-[300px] items-center overflow-auto max-h-[75vh]">
-                <div id="gif-container" class="flex justify-center w-full hidden">
-                    <img id="modal-gif" src="" alt="File Preview" class="max-w-full max-h-[70vh] rounded">
+            <div class="p-6 bg-black min-h-[300px] flex justify-center items-center overflow-auto max-h-[75vh]">
+                <div id="gif-container" class="w-full text-center hidden">
+                    <img id="modal-gif" src="" alt="File Preview" class="max-w-full max-h-[70vh] mx-auto rounded">
                 </div>
                 <pre id="modal-code-container" class="w-full text-left hidden"><code id="modal-code" class="language-html"></code></pre>
                 <div id="modal-readme-container" class="w-full text-left text-gray-300 readme-preview hidden"></div>
+                <div id="audio-container" class="w-full text-center hidden">
+                    <i class="fas fa-music text-5xl text-purple-400 mb-4 block"></i>
+                    <audio id="modal-audio" controls class="mx-auto w-2/3"></audio>
+                </div>
+                <div id="video-container" class="w-full text-center hidden">
+                    <video id="modal-video" controls class="max-w-full max-h-[60vh] mx-auto rounded"></video>
+                </div>
+                <div id="pdf-container" class="w-full h-[60vh] hidden">
+                    <iframe id="modal-pdf" src="" class="w-full h-full rounded border-0"></iframe>
+                </div>
             </div>
             <div class="p-3 bg-secondary border-t border-gray flex justify-end">
                 <button onclick="closeFile()" class="btn-github px-4 py-1 rounded text-sm font-semibold">Close</button>
@@ -130,38 +158,52 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <script>
-        // NEW CODE: This script fires instantly on window load to grab your <title> configuration
+        // Synchronize interface header text variables using document title content strings
         window.addEventListener('DOMContentLoaded', () => {
-            const pageTitle = document.title; // Grabs "UniGit/uni-git-demo"
-            
+            const pageTitle = document.title;
             if (pageTitle.includes('/')) {
                 const parts = pageTitle.split('/');
                 const ownerName = parts[0].trim();
                 const repoName = parts[1].trim();
                 
-                // Update elements directly in the DOM interface
                 document.getElementById('repo-owner').innerText = ownerName;
                 document.getElementById('repo-title').innerText = repoName;
                 document.getElementById('commit-author').innerText = ownerName;
             }
         });
 
-        function openFile(name, type, gifUrl) {
+        function openFile(name, type, targetUrl) {
             const modal = document.getElementById('file-modal');
             const modalName = document.getElementById('modal-filename');
             
+            // Collect structural modal UI display segments
             const gifContainer = document.getElementById('gif-container');
             const modalImg = document.getElementById('modal-gif');
             const codeContainer = document.getElementById('modal-code-container');
             const codeElement = document.getElementById('modal-code');
             const readmeContainer = document.getElementById('modal-readme-container');
+            const audioContainer = document.getElementById('audio-container');
+            const modalAudio = document.getElementById('modal-audio');
+            const videoContainer = document.getElementById('video-container');
+            const modalVideo = document.getElementById('modal-video');
+            const pdfContainer = document.getElementById('pdf-container');
+            const modalPdf = document.getElementById('modal-pdf');
 
             modalName.innerText = name;
             
+            // Collapse all visualization containers before selective re-routing
             gifContainer.classList.add('hidden');
             codeContainer.classList.add('hidden');
             readmeContainer.classList.add('hidden');
-            
+            audioContainer.classList.add('hidden');
+            videoContainer.classList.add('hidden');
+            pdfContainer.classList.add('hidden');
+
+            // Explicit clean-ups to halt background tracks when switching media windows
+            modalAudio.pause(); modalAudio.src = "";
+            modalVideo.pause(); modalVideo.src = "";
+            modalPdf.src = "";
+
             if (type === 'code') {
                 codeContainer.classList.remove('hidden');
                 const currentHtmlCode = document.documentElement.outerHTML;
@@ -173,9 +215,24 @@
                 const sourceContent = document.getElementById('readme-source-content').innerHTML;
                 readmeContainer.innerHTML = sourceContent;
 
+            } else if (type === 'audio') {
+                audioContainer.classList.remove('hidden');
+                modalAudio.src = targetUrl;
+                modalAudio.load();
+
+            } else if (type === 'video') {
+                videoContainer.classList.remove('hidden');
+                modalVideo.src = targetUrl;
+                modalVideo.load();
+
+            } else if (type === 'pdf') {
+                pdfContainer.classList.remove('hidden');
+                modalPdf.src = targetUrl;
+
             } else {
+                // Default fallback container logic for direct 'gif' asset queries
                 gifContainer.classList.remove('hidden');
-                modalImg.src = gifUrl;
+                modalImg.src = targetUrl;
             }
 
             modal.style.display = 'flex';
@@ -184,6 +241,11 @@
 
         function closeFile() {
             const modal = document.getElementById('file-modal');
+            
+            // Safely stop background asset playback routines during user exit
+            document.getElementById('modal-audio').pause();
+            document.getElementById('modal-video').pause();
+            
             modal.style.display = 'none';
             document.body.style.overflow = 'auto';
         }
