@@ -1,6 +1,173 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title> Universal github </title>
-  </head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>username/repository-name - GitHub Clone</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background-color: #0d1117; color: #c9d1d9; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+        .border-gray { border-color: #30363d; }
+        .bg-secondary { background-color: #161b22; }
+        .btn-github { background-color: #21262d; border: 1px solid #30363d; }
+        .btn-github:hover { background-color: #30363d; border-color: #8b949e; }
+        .text-blue-link { color: #58a6ff; }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="bg-secondary py-4 px-8 flex items-center justify-between border-b border-gray">
+        <div class="flex items-center gap-4">
+            <i class="fab fa-github text-3xl text-white"></i>
+            <div class="relative">
+                <input type="text" placeholder="Search or jump to..." class="bg-transparent border border-gray rounded-md px-3 py-1 text-sm w-64 focus:outline-none focus:border-blue-500">
+            </div>
+            <nav class="flex gap-4 text-sm font-semibold">
+                <a href="#" class="hover:text-gray-400">Pull requests</a>
+                <a href="#" class="hover:text-gray-400">Issues</a>
+                <a href="#" class="hover:text-gray-400">Marketplace</a>
+                <a href="#" class="hover:text-gray-400">Explore</a>
+            </nav>
+        </div>
+        <div class="flex items-center gap-4">
+            <i class="far fa-bell"></i>
+            <i class="fas fa-plus"></i>
+            <div class="w-6 h-6 bg-gray-600 rounded-full"></div>
+        </div>
+    </header>
+
+    <!-- Repo Title & Actions -->
+    <main class="max-w-7xl mx-auto px-8 mt-6">
+        <div class="flex justify-between items-start mb-4">
+            <div class="flex items-center gap-2 text-xl">
+                <i class="far fa-bookmark text-gray-400"></i>
+                <a href="#" class="text-blue-link hover:underline">username</a>
+                <span class="text-gray-500">/</span>
+                <a href="#" class="text-blue-link font-bold hover:underline">repository-name</a>
+                <span class="text-xs border border-gray px-2 py-0.5 rounded-full text-gray-400 font-medium ml-2">Public</span>
+            </div>
+            <div class="flex gap-2 text-xs font-semibold">
+                <button class="btn-github px-3 py-1.5 rounded-md"><i class="far fa-eye mr-2"></i>Watch</button>
+                <button class="btn-github px-3 py-1.5 rounded-md"><i class="fas fa-code-branch mr-2"></i>Fork <span class="bg-gray-700 px-1 rounded ml-1">12</span></button>
+                <button class="btn-github px-3 py-1.5 rounded-md"><i class="far fa-star mr-2"></i>Star <span class="bg-gray-700 px-1 rounded ml-1">1.2k</span></button>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="flex gap-6 border-b border-gray mb-6 text-sm">
+            <div class="pb-3 border-b-2 border-orange-400 flex items-center gap-2 cursor-pointer font-bold">
+                <i class="fas fa-code"></i> Code
+            </div>
+            <div class="pb-3 flex items-center gap-2 text-gray-400 cursor-pointer hover:border-b-2 hover:border-gray-500">
+                <i class="far fa-circle-dot"></i> Issues <span class="bg-gray-800 px-2 rounded-full">5</span>
+            </div>
+            <div class="pb-3 flex items-center gap-2 text-gray-400 cursor-pointer">
+                <i class="fas fa-code-pull-request"></i> Pull requests
+            </div>
+            <div class="pb-3 flex items-center gap-2 text-gray-400 cursor-pointer">
+                <i class="far fa-play-circle"></i> Actions
+            </div>
+        </div>
+
+        <!-- Content Grid -->
+        <div class="grid grid-cols-12 gap-8">
+            <!-- Left Column: Files -->
+            <div class="col-span-9">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-3">
+                        <button class="btn-github px-3 py-1.5 rounded-md text-sm font-semibold flex items-center gap-2">
+                            <i class="fas fa-code-branch"></i> main <i class="fas fa-caret-down"></i>
+                        </button>
+                        <span class="text-sm font-semibold"><i class="fas fa-code-branch text-gray-500"></i> 1 branch</span>
+                        <span class="text-sm font-semibold"><i class="fas fa-tag text-gray-500"></i> 0 tags</span>
+                    </div>
+                    <button class="bg-green-600 hover:bg-green-700 text-white px-4 py-1.5 rounded-md text-sm font-semibold">
+                        Code <i class="fas fa-caret-down ml-1"></i>
+                    </button>
+                </div>
+
+                <!-- File List -->
+                <div class="border border-gray rounded-md overflow-hidden">
+                    <div class="bg-secondary p-4 flex justify-between items-center border-b border-gray text-sm">
+                        <div class="flex items-center gap-3">
+                            <div class="w-6 h-6 bg-blue-500 rounded-full"></div>
+                            <span class="font-bold">username</span>
+                            <span class="text-gray-400">Update README.md</span>
+                        </div>
+                        <span class="text-gray-400">2 hours ago</span>
+                    </div>
+                    <table class="w-full text-sm">
+                        <tr class="border-b border-gray hover:bg-secondary cursor-pointer">
+                            <td class="p-3 w-8"><i class="fas fa-folder text-blue-300"></i></td>
+                            <td class="p-3">src</td>
+                            <td class="p-3 text-gray-400">Refactor core logic</td>
+                            <td class="p-3 text-right text-gray-400">yesterday</td>
+                        </tr>
+                        <tr class="border-b border-gray hover:bg-secondary cursor-pointer">
+                            <td class="p-3 w-8"><i class="far fa-file-code text-gray-400"></i></td>
+                            <td class="p-3">index.html</td>
+                            <td class="p-3 text-gray-400">Initial commit</td>
+                            <td class="p-3 text-right text-gray-400">2 days ago</td>
+                        </tr>
+                        <tr class="hover:bg-secondary cursor-pointer">
+                            <td class="p-3 w-8"><i class="far fa-file-alt text-gray-400"></i></td>
+                            <td class="p-3">README.md</td>
+                            <td class="p-3 text-gray-400">Update README.md</td>
+                            <td class="p-3 text-right text-gray-400">2 hours ago</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <!-- README Section -->
+                <div class="mt-6 border border-gray rounded-md">
+                    <div class="bg-secondary p-4 border-b border-gray flex items-center gap-2">
+                        <i class="fas fa-list text-xs"></i>
+                        <span class="font-bold text-sm uppercase">README.md</span>
+                    </div>
+                    <div class="p-10 prose prose-invert">
+                        <h1 class="text-3xl font-bold border-b border-gray pb-2 mb-4">Project Title</h1>
+                        <p class="text-gray-400 mb-4">This is a GitHub-style clone generated using Tailwind CSS.</p>
+                        <h2 class="text-xl font-bold border-b border-gray pb-2 mb-2">Features</h2>
+                        <ul class="list-disc ml-6 text-gray-400">
+                            <li>Responsive design</li>
+                            <li>Semantic UI components</li>
+                            <li>Dark theme as default</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Info -->
+            <div class="col-span-3">
+                <div class="mb-6">
+                    <h3 class="font-bold mb-2">About</h3>
+                    <p class="text-sm text-gray-400 mb-4">A simple template to recreate the GitHub look and feel using modern CSS utilities.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-blue-900 text-blue-200 text-xs px-3 py-1 rounded-full">tailwind</span>
+                        <span class="bg-blue-900 text-blue-200 text-xs px-3 py-1 rounded-full">html-css</span>
+                        <span class="bg-blue-900 text-blue-200 text-xs px-3 py-1 rounded-full">github-clone</span>
+                    </div>
+                </div>
+                <div class="mb-6 border-t border-gray pt-4">
+                    <h3 class="font-bold mb-2 text-sm">Releases</h3>
+                    <p class="text-xs text-gray-500">No releases published</p>
+                </div>
+                <div class="mb-6 border-t border-gray pt-4">
+                    <h3 class="font-bold mb-2 text-sm">Languages</h3>
+                    <div class="w-full h-2 rounded-full flex overflow-hidden mb-2">
+                        <div class="bg-orange-500 w-3/4"></div>
+                        <div class="bg-blue-500 w-1/4"></div>
+                    </div>
+                    <div class="flex gap-4 text-xs font-semibold">
+                        <span><i class="fas fa-circle text-orange-500 mr-1"></i> HTML <span class="text-gray-500">75%</span></span>
+                        <span><i class="fas fa-circle text-blue-500 mr-1"></i> CSS <span class="text-gray-500">25%</span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
 </html>
