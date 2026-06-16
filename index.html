@@ -80,7 +80,7 @@
                     <td class="p-3 text-gray-400">Application features walkthrough clip</td>
                     <td class="p-3 text-right text-gray-400">3 hours ago</td>
                 </tr>
-                <tr class="file-row border-b border-gray" onclick="openFile('presentation.pptx', 'gif', 'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3ZhcHoxdmh6dmh6dmh6dmh6dmh6dmh6dmh6dmh6dmh6dmh6dmh6diZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/26tn33aiTi1jkl6H6/giphy.gif')">
+                <tr class="file-row border-b border-gray" onclick="openFile('presentation.pptx', 'pdf', 'https://www.w3.org/WAI/gatherings/tpac2017/slides/accessibility-intro.pdf')">
                     <td class="p-3 w-8 text-center"><i class="fas fa-file-powerpoint text-gray-400"></i></td>
                     <td class="p-3 font-medium">presentation.pptx</td>
                     <td class="p-3 text-gray-400">Project pitch and summary deck</td>
@@ -236,7 +236,6 @@
                 modalPdf.src = targetUrl;
 
             } else {
-                // Default fallback container logic for direct 'gif' asset queries
                 gifContainer.classList.remove('hidden');
                 modalImg.src = targetUrl;
             }
