@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User/better-github-showcase</title>
+    <title>username/repository-name - GitHub Clone</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -13,14 +13,14 @@
         .btn-github { background-color: #21262d; border: 1px solid #30363d; }
         .btn-github:hover { background-color: #30363d; border-color: #8b949e; }
         .text-blue-link { color: #58a6ff; }
-        .file-row:hover { background-color: #161b22; cursor: pointer; }
+        .file-row:hover { background-color: #1c2128; cursor: pointer; }
         #file-modal { display: none; }
     </style>
 </head>
-<body class="pb-10">
+<body class="pb-20">
 
     <!-- Header -->
-    <header class="bg-secondary py-4 px-8 flex items-center justify-between border-b border-gray">
+    <header class="bg-secondary py-3 px-8 flex items-center justify-between border-b border-gray">
         <div class="flex items-center gap-4">
             <i class="fab fa-github text-3xl text-white cursor-pointer"></i>
             <div class="relative">
@@ -34,62 +34,95 @@
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto px-8 mt-6">
+    <main class="max-w-5xl mx-auto px-8 mt-8">
         <!-- Breadcrumbs -->
-        <div class="flex items-center gap-2 text-xl mb-4">
+        <div class="flex items-center gap-2 text-xl mb-6">
             <i class="far fa-bookmark text-gray-400"></i>
-            <a href="#" class="text-blue-link">username</a> <span class="text-gray-500">/</span> <a href="#" class="text-blue-link font-bold">repository-name</a>
+            <a href="#" class="text-blue-link">username</a> 
+            <span class="text-gray-500">/</span> 
+            <a href="#" class="text-blue-link font-bold">repository-name</a>
+            <span class="text-xs border border-gray px-2 py-0.5 rounded-full text-gray-400 font-medium ml-2">Public</span>
         </div>
 
         <!-- File Explorer -->
-        <div class="border border-gray rounded-md overflow-hidden bg-transparent">
+        <div class="border border-gray rounded-md overflow-hidden bg-transparent mb-8">
             <div class="bg-secondary p-4 flex justify-between items-center border-b border-gray text-sm">
                 <div class="flex items-center gap-3">
-                    <div class="w-6 h-6 bg-blue-500 rounded-full"></div>
+                    <div class="w-6 h-6 bg-green-500 rounded-full"></div>
                     <span class="font-bold">username</span>
-                    <span class="text-gray-400">Initial project structure</span>
+                    <span class="text-gray-400">Fixed styles and updated README</span>
                 </div>
+                <span class="text-gray-400">Just now</span>
             </div>
             <table class="w-full text-sm">
+                <!-- Row 1 -->
                 <tr class="file-row border-b border-gray" onclick="openFile('src', 'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKMGpxx6B37LXY4/giphy.gif')">
                     <td class="p-3 w-8 text-center"><i class="fas fa-folder text-blue-300"></i></td>
                     <td class="p-3 font-medium">src</td>
-                    <td class="p-3 text-gray-400">Add core logic</td>
+                    <td class="p-3 text-gray-400">Main application logic</td>
                     <td class="p-3 text-right text-gray-400">2 days ago</td>
                 </tr>
+                <!-- Row 2 -->
                 <tr class="file-row border-b border-gray" onclick="openFile('index.html', 'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3ZhcHoxdmh6dmh6dmh6dmh6dmh6dmh6dmh6dmh6dmh6dmh6dmh6diZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/26tn33aiTi1jkl6H6/giphy.gif')">
                     <td class="p-3 w-8 text-center"><i class="far fa-file-code text-gray-400"></i></td>
                     <td class="p-3 font-medium">index.html</td>
-                    <td class="p-3 text-gray-400">Setup base layout</td>
+                    <td class="p-3 text-gray-400">Initial layout setup</td>
                     <td class="p-3 text-right text-gray-400">1 hour ago</td>
                 </tr>
+                <!-- Row 3 -->
                 <tr class="file-row" onclick="openFile('README.md', 'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbmZueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l0HlMG1W8f2S0/giphy.gif')">
                     <td class="p-3 w-8 text-center"><i class="far fa-file-alt text-gray-400"></i></td>
                     <td class="p-3 font-medium">README.md</td>
-                    <td class="p-3 text-gray-400">Update documentation</td>
-                    <td class="p-3 text-right text-gray-400">5 mins ago</td>
+                    <td class="p-3 text-gray-400">Update project description</td>
+                    <td class="p-3 text-right text-gray-400">Just now</td>
                 </tr>
             </table>
         </div>
+
+        <!-- README SECTION (Static/Editable) -->
+        <div class="border border-gray rounded-md overflow-hidden bg-transparent">
+            <div class="bg-secondary p-3 border-b border-gray flex items-center gap-2">
+                <i class="fas fa-list text-xs text-gray-400"></i>
+                <span class="font-bold text-sm">README.md</span>
+            </div>
+            <div class="p-10">
+                <!-- ========================================== -->
+                <!-- EDIT README CONTENT HERE (Start) -->
+                <!-- ========================================== -->
+                <h1 class="text-3xl font-bold border-b border-gray pb-2 mb-4">My Awesome Repository</h1>
+                
+                <p class="mb-4 text-gray-300">Welcome to this clone of the GitHub UI. This section is editable directly in the HTML code.</p>
+
+                <h2 class="text-xl font-bold border-b border-gray pb-2 mb-4">How to use</h2>
+                <ul class="list-disc ml-6 mb-4 space-y-2 text-gray-300">
+                    <li>Click on any file row above to see a GIF preview.</li>
+                    <li>Edit the text inside the HTML <code>&lt;div&gt;</code> to change this README.</li>
+                    <li>Swap out the GIF URLs in the JavaScript to customize the "file" contents.</li>
+                </ul>
+
+                <h2 class="text-xl font-bold border-b border-gray pb-2 mb-4">Tech Stack</h2>
+                <p class="text-gray-300">Tailwind CSS, FontAwesome, and Vanilla JavaScript.</p>
+                <!-- ========================================== -->
+                <!-- EDIT README CONTENT HERE (End) -->
+                <!-- ========================================== -->
+            </div>
+        </div>
     </main>
 
-    <!-- File Viewer Modal -->
+    <!-- File Viewer Modal (Hidden by default) -->
     <div id="file-modal" class="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center p-4">
-        <div class="bg-secondary w-full max-w-4xl border border-gray rounded-lg shadow-2xl overflow-hidden">
-            <!-- Modal Header -->
-            <div class="flex items-center justify-between p-4 border-b border-gray">
-                <div class="flex items-center gap-2">
+        <div class="bg-secondary w-full max-w-3xl border border-gray rounded-lg shadow-2xl">
+            <div class="flex items-center justify-between p-3 border-b border-gray">
+                <div class="flex items-center gap-2 px-2">
                     <i class="far fa-file-alt text-gray-400"></i>
                     <span id="modal-filename" class="font-bold text-sm">filename</span>
                 </div>
-                <button onclick="closeFile()" class="text-gray-400 hover:text-white text-xl">&times;</button>
+                <button onclick="closeFile()" class="text-gray-400 hover:text-white px-2 text-2xl">&times;</button>
             </div>
-            <!-- Modal Content -->
-            <div class="p-8 flex justify-center bg-black">
-                <img id="modal-gif" src="" alt="File Preview" class="max-w-full rounded shadow-lg">
+            <div class="p-4 flex justify-center bg-black min-h-[300px] items-center">
+                <img id="modal-gif" src="" alt="File Preview" class="max-w-full max-h-[70vh] rounded">
             </div>
-            <!-- Modal Footer -->
-            <div class="p-3 bg-secondary border-t border-gray text-right">
+            <div class="p-3 bg-secondary border-t border-gray flex justify-end">
                 <button onclick="closeFile()" class="btn-github px-4 py-1 rounded text-sm font-semibold">Close</button>
             </div>
         </div>
@@ -104,8 +137,6 @@
             modalName.innerText = name;
             modalImg.src = gifUrl;
             modal.style.display = 'flex';
-            
-            // Prevent body scroll
             document.body.style.overflow = 'hidden';
         }
 
@@ -115,7 +146,7 @@
             document.body.style.overflow = 'auto';
         }
 
-        // Close on clicking outside the box
+        // Close when clicking background
         window.onclick = function(event) {
             const modal = document.getElementById('file-modal');
             if (event.target == modal) {
@@ -124,3 +155,4 @@
         }
     </script>
 </body>
+</html>
