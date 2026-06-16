@@ -6,6 +6,7 @@
     <title>UniGit/uni-git-demo</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
     <style>
         body { background-color: #0d1117; color: #c9d1d9; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
         .border-gray { border-color: #30363d; }
@@ -15,11 +16,12 @@
         .text-blue-link { color: #58a6ff; }
         .file-row:hover { background-color: #1c2128; cursor: pointer; }
         #file-modal { display: none; }
+        /* Clean up Prism background to match your GitHub UI */
+        pre[class*="language-"] { background: #050505 !important; margin: 0 !important; padding: 1rem !important; border-radius: 0.375rem; width: 100%; }
     </style>
 </head>
 <body class="pb-20">
 
-    <!-- Header -->
     <header class="bg-secondary py-3 px-8 flex items-center justify-between border-b border-gray">
         <div class="flex items-center gap-4">
             <i class="fab fa-github text-3xl text-white cursor-pointer"></i>
@@ -35,7 +37,6 @@
     </header>
 
     <main class="max-w-5xl mx-auto px-8 mt-8">
-        <!-- Breadcrumbs -->
         <div class="flex items-center gap-2 text-xl mb-6">
             <i class="far fa-bookmark text-gray-400"></i>
             <a href="#" class="text-blue-link">username</a> 
@@ -44,7 +45,6 @@
             <span class="text-xs border border-gray px-2 py-0.5 rounded-full text-gray-400 font-medium ml-2">Public</span>
         </div>
 
-        <!-- File Explorer -->
         <div class="border border-gray rounded-md overflow-hidden bg-transparent mb-8">
             <div class="bg-secondary p-4 flex justify-between items-center border-b border-gray text-sm">
                 <div class="flex items-center gap-3">
@@ -55,22 +55,19 @@
                 <span class="text-gray-400">Just now</span>
             </div>
             <table class="w-full text-sm">
-                <!-- Row 1 -->
-                <tr class="file-row border-b border-gray" onclick="openFile('src', 'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKMGpxx6B37LXY4/giphy.gif')">
+                <tr class="file-row border-b border-gray" onclick="openFile('src', 'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKMGpxx6B37LXY4/giphy.gif', false)">
                     <td class="p-3 w-8 text-center"><i class="fas fa-folder text-blue-300"></i></td>
                     <td class="p-3 font-medium">src</td>
                     <td class="p-3 text-gray-400">Main application logic</td>
                     <td class="p-3 text-right text-gray-400">2 days ago</td>
                 </tr>
-                <!-- Row 2 -->
-                <tr class="file-row border-b border-gray" onclick="openFile('index.html', 'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3ZhcHoxdmh6dmh6dmh6dmh6dmh6dmh6dmh6dmh6dmh6dmh6dmh6diZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/26tn33aiTi1jkl6H6/giphy.gif')">
+                <tr class="file-row border-b border-gray" onclick="openFile('index.html', '', true)">
                     <td class="p-3 w-8 text-center"><i class="far fa-file-code text-gray-400"></i></td>
                     <td class="p-3 font-medium">index.html</td>
                     <td class="p-3 text-gray-400">Initial layout setup</td>
                     <td class="p-3 text-right text-gray-400">1 hour ago</td>
                 </tr>
-                <!-- Row 3 -->
-                <tr class="file-row" onclick="openFile('README.md', 'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbmZueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l0HlMG1W8f2S0/giphy.gif')">
+                <tr class="file-row" onclick="openFile('README.md', 'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbmZueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l0HlMG1W8f2S0/giphy.gif', false)">
                     <td class="p-3 w-8 text-center"><i class="far fa-file-alt text-gray-400"></i></td>
                     <td class="p-3 font-medium">README.md</td>
                     <td class="p-3 text-gray-400">Update project description</td>
@@ -79,37 +76,26 @@
             </table>
         </div>
 
-        <!-- README SECTION (Static/Editable) -->
         <div class="border border-gray rounded-md overflow-hidden bg-transparent">
             <div class="bg-secondary p-3 border-b border-gray flex items-center gap-2">
                 <i class="fas fa-list text-xs text-gray-400"></i>
                 <span class="font-bold text-sm">README.md</span>
             </div>
             <div class="p-10">
-                <!-- ========================================== -->
-                <!-- EDIT README CONTENT HERE (Start) -->
-                <!-- ========================================== -->
                 <h1 class="text-3xl font-bold border-b border-gray pb-2 mb-4">My Awesome Repository</h1>
-                
                 <p class="mb-4 text-gray-300">Welcome to this clone of the GitHub UI. This section is editable directly in the HTML code.</p>
-
                 <h2 class="text-xl font-bold border-b border-gray pb-2 mb-4">How to use</h2>
                 <ul class="list-disc ml-6 mb-4 space-y-2 text-gray-300">
-                    <li>Click on any file row above to see a GIF preview.</li>
+                    <li>Click on any file row above to see a GIF preview or actual code.</li>
                     <li>Edit the text inside the HTML <code>&lt;div&gt;</code> to change this README.</li>
                     <li>Swap out the GIF URLs in the JavaScript to customize the "file" contents.</li>
                 </ul>
-
                 <h2 class="text-xl font-bold border-b border-gray pb-2 mb-4">Tech Stack</h2>
                 <p class="text-gray-300">Tailwind CSS, FontAwesome, and Vanilla JavaScript.</p>
-                <!-- ========================================== -->
-                <!-- EDIT README CONTENT HERE (End) -->
-                <!-- ========================================== -->
             </div>
         </div>
     </main>
 
-    <!-- File Viewer Modal (Hidden by default) -->
     <div id="file-modal" class="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center p-4">
         <div class="bg-secondary w-full max-w-3xl border border-gray rounded-lg shadow-2xl">
             <div class="flex items-center justify-between p-3 border-b border-gray">
@@ -119,8 +105,9 @@
                 </div>
                 <button onclick="closeFile()" class="text-gray-400 hover:text-white px-2 text-2xl">&times;</button>
             </div>
-            <div class="p-4 flex justify-center bg-black min-h-[300px] items-center">
-                <img id="modal-gif" src="" alt="File Preview" class="max-w-full max-h-[70vh] rounded">
+            <div class="p-4 flex justify-center bg-black min-h-[300px] items-center overflow-auto max-h-[75vh]">
+                <img id="modal-gif" src="" alt="File Preview" class="max-w-full max-h-[70vh] rounded hidden">
+                <pre id="modal-code-container" class="w-full text-left hidden"><code id="modal-code" class="language-html"></code></pre>
             </div>
             <div class="p-3 bg-secondary border-t border-gray flex justify-end">
                 <button onclick="closeFile()" class="btn-github px-4 py-1 rounded text-sm font-semibold">Close</button>
@@ -128,14 +115,37 @@
         </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <script>
-        function openFile(name, gifUrl) {
+        function openFile(name, gifUrl, isCode) {
             const modal = document.getElementById('file-modal');
             const modalName = document.getElementById('modal-filename');
             const modalImg = document.getElementById('modal-gif');
+            const codeContainer = document.getElementById('modal-code-container');
+            const codeElement = document.getElementById('modal-code');
 
             modalName.innerText = name;
-            modalImg.src = gifUrl;
+            
+            if (isCode) {
+                // Hide the image, show the code container
+                modalImg.classList.add('hidden');
+                codeContainer.classList.remove('hidden');
+                
+                // Fetch the current page's HTML structure dynamically
+                const currentHtmlCode = document.documentElement.outerHTML;
+                
+                // TextContent automatically escapes HTML characters (e.g., < becomes &lt;) so it doesn't render as active elements
+                codeElement.textContent = currentHtmlCode;
+                
+                // Tell Prism to re-run and apply syntax colors
+                Prism.highlightElement(codeElement);
+            } else {
+                // Hide code container, show the image
+                codeContainer.classList.add('hidden');
+                modalImg.classList.remove('hidden');
+                modalImg.src = gifUrl;
+            }
+
             modal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
@@ -146,7 +156,6 @@
             document.body.style.overflow = 'auto';
         }
 
-        // Close when clicking background
         window.onclick = function(event) {
             const modal = document.getElementById('file-modal');
             if (event.target == modal) {
