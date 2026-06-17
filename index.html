@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UniGit/uni-git-demo</title>
@@ -32,9 +30,7 @@
         .readme-preview ul { list-style-type: disc; margin-left: 1.5rem; margin-bottom: 1rem; }
         .readme-preview li { margin-bottom: 0.5rem; color: #c9d1d9; }
         .readme-preview code { background-color: #21262d; padding: 0.2rem 0.4rem; border-radius: 0.25rem; font-family: monospace; font-size: 0.875rem; }
-    </style>
-</head>
-<body class="pb-20 relative">
+    </style></head><body class="pb-20 relative">
 
     <div id="demo-toast" class="fixed top-5 right-5 bg-red-900/90 border border-red-500 text-red-200 px-4 py-3 rounded-md shadow-2xl flex items-center gap-3 z-[100] transform translate-y-[-20px] opacity-0 pointer-events-none transition-all duration-300">
         <i class="fas fa-exclamation-triangle text-red-400"></i>
@@ -80,9 +76,9 @@
                     <i class="fas fa-code-branch text-xs text-gray-400"></i>
                     <span>Pull requests</span>
                 </a>
-                <a href="#" onclick="switchTab(event, 'view-agents')" class="nav-tab flex items-center gap-2 px-3 py-2 border-b-2 border-transparent hover:bg-[#1c2128] hover:text-white rounded-t-md transition-all">
-                    <i class="fas fa-robot text-xs text-gray-400"></i>
-                    <span>Agents</span>
+                <a href="#" onclick="switchTab(event, 'view-contact')" class="nav-tab flex items-center gap-2 px-3 py-2 border-b-2 border-transparent hover:bg-[#1c2128] hover:text-white rounded-t-md transition-all">
+                    <i class="far fa-envelope text-xs text-gray-400"></i>
+                    <span>Contact us</span>
                 </a>
                 <a href="#" onclick="switchTab(event, 'view-actions')" class="nav-tab flex items-center gap-2 px-3 py-2 border-b-2 border-transparent hover:bg-[#1c2128] hover:text-white rounded-t-md transition-all">
                     <i class="far fa-play-circle text-xs text-gray-400"></i>
@@ -197,11 +193,31 @@
                 <p class="text-sm text-gray-400 max-w-md mx-auto">Branches look healthy. Create a pull request to propose and collaborate on structural code changes.</p>
             </div>
 
-            <div id="view-agents" class="tab-view hidden border border-gray rounded-md p-8 bg-secondary text-center">
-                <i class="fas fa-robot text-4xl text-gray-500 mb-3 block"></i>
-                <h3 class="text-lg font-semibold text-white mb-1">UniGit AI Agents</h3>
-                <p class="text-sm text-gray-400 max-w-md mx-auto">Autonomous agent monitoring is online. No active deployment triggers detected.</p>
+            <div id="view-contact" class="tab-view hidden border border-gray rounded-md p-8 bg-secondary">
+                <h3 class="text-xl font-semibold text-white border-b border-gray pb-3 mb-6 flex items-center gap-2">
+                    <i class="far fa-envelope text-gray-400 text-base"></i> Contact us
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="p-4 border border-gray rounded-md bg-[#0d1117] hover:border-gray-400 transition-colors">
+                        <div class="font-bold text-gray-200 text-sm mb-2">Lead programmer - Motiejus Jankausaks</div>
+                        <div class="text-sm text-blue-link mb-1"><a href="mailto:jankauskas.motiejus@proton.me" class="hover:underline">jankauskas.motiejus@proton.me</a></div>
+                        <div class="text-xs text-gray-400">+37068987802</div>
+                    </div>
+                    <div class="p-4 border border-gray rounded-md bg-[#0d1117] hover:border-gray-400 transition-colors">
+                        <div class="font-bold text-gray-200 text-sm mb-2">Social ties - Danielius Dapkūnas</div>
+                        <div class="text-sm text-blue-link mb-1"><a href="mailto:danielius1506@gmail.com" class="hover:underline">danielius1506@gmail.com</a></div>
+                        <div class="text-xs text-gray-400">+37060881480</div>
+                    </div>
+                    <div class="p-4 border border-gray rounded-md bg-[#0d1117] hover:border-gray-400 transition-colors">
+                        <div class="font-bold text-gray-200 text-sm mb-2">Designer - Skomantas Bagočiūnas</div>
+                        <div class="text-sm text-blue-link mb-1"><a href="mailto:skomantas11@gmail.com" class="hover:underline">skomantas11@gmail.com</a></div>
+                        <div class="text-xs text-gray-400">+37067199085</div>
+                    </div>
+                </div>
             </div>
+            <!--      Lead programmer - Motiejus Jankauskas  +37068987802  jankauskas.motiejus@proton.me   
+                      Social ties - Danielius Dapkūnas  +37060881480  danielius1506@gmail.com
+                      Designer - Skomantas Bagočiūnas +37067199085 skomantas11@gmail.com-->
 
             <div id="view-actions" class="tab-view hidden border border-gray rounded-md p-8 bg-secondary text-center">
                 <i class="far fa-play-circle text-4xl text-gray-500 mb-3 block"></i>
@@ -425,7 +441,6 @@
                 pdfContainer.classList.remove('hidden');
                 modalPdf.src = targetUrl;
             } else {
-                // SPRENDIMAS NUOTRAUKOMS IR GIF:
                 gifContainer.classList.remove('hidden');
                 modalImg.src = targetUrl;
             }
