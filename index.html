@@ -121,6 +121,12 @@
                     </div>
 
                     <table class="w-full text-sm">
+                        <tr class="file-row border-b border-gray" onclick="openFile('nuotrauka.png', 'image', 'https://eeyiiicptcfnevxkbovy.supabase.co/storage/v1/object/public/ShowcaseFiles/logoFull.png')">
+                            <td class="p-3 w-8 text-center"><i class="far fa-image text-gray-400"></i></td>
+                            <td class="p-3 font-medium">nuotrauka.png</td>
+                            <td class="p-3 text-gray-400">Pavyzdinė sistemos nuotrauka</td>
+                            <td class="p-3 text-right text-gray-400">Just now</td>
+                        </tr>
                         <tr class="file-row border-b border-gray" onclick="openFile('modelis.3d', '3d', 'https://eeyiiicptcfnevxkbovy.supabase.co/storage/v1/object/public/ShowcaseFiles/wings_of_freedom-parrot-4697.glb')">
                             <td class="p-3 w-8 text-center"><i class="fas fa-cube text-gray-400"></i></td>
                             <td class="p-3 font-medium">modelis.3d</td>
@@ -295,21 +301,17 @@
         function switchTab(event, targetViewId) {
             event.preventDefault();
             
-            // Hide all tab views
             const views = document.querySelectorAll('.tab-view');
             views.forEach(view => view.classList.add('hidden'));
             
-            // Show target view
             document.getElementById(targetViewId).classList.remove('hidden');
             
-            // Manage Tab Styles
             const tabs = document.querySelectorAll('.nav-tab');
             tabs.forEach(tab => {
                 tab.classList.remove('border-[#f78166]', 'text-white', 'font-semibold');
                 tab.classList.add('border-transparent');
             });
             
-            // Light up active tab
             event.currentTarget.classList.remove('border-transparent');
             event.currentTarget.classList.add('border-[#f78166]', 'text-white', 'font-semibold');
         }
@@ -325,7 +327,6 @@
                 document.getElementById('repo-title').innerText = repoName;
             }
 
-            // Render repository README summary
             const readmeMainBox = document.getElementById('readme-source-content');
             if (readmeMainBox) {
                 fetch('https://eeyiiicptcfnevxkbovy.supabase.co/storage/v1/object/public/ShowcaseFiles/README.md')
@@ -424,6 +425,7 @@
                 pdfContainer.classList.remove('hidden');
                 modalPdf.src = targetUrl;
             } else {
+                // SPRENDIMAS NUOTRAUKOMS IR GIF:
                 gifContainer.classList.remove('hidden');
                 modalImg.src = targetUrl;
             }
