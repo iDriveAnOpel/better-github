@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UniGit/uni-git-demo</title>
+    
+    <link rel="icon" type="image/png" href="https://eeyiiicptcfnevxkbovy.supabase.co/storage/v1/object/public/ShowcaseFiles/logoGit.png">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
@@ -40,7 +43,9 @@
 
     <header class="bg-secondary py-3 px-8 flex items-center justify-between border-b border-gray">
         <div class="flex items-center gap-4">
-            <i class="fab fa-github text-3xl text-white cursor-pointer"></i>
+            <img src="https://eeyiiicptcfnevxkbovy.supabase.co/storage/v1/object/public/ShowcaseFiles/logoFull.png" alt="Logo" class="h-8 w-auto object-contain cursor-pointer onErrorFallback" onerror="this.style.display='none'; document.getElementById('fallback-icon').classList.remove('hidden');">
+            <i id="fallback-icon" class="fab fa-github text-3xl text-white cursor-pointer hidden"></i>
+            
             <div class="relative">
                 <input type="text" placeholder="Search..." class="bg-transparent border border-gray rounded-md px-3 py-1 text-sm w-64 focus:outline-none focus:border-blue-500">
             </div>
@@ -74,31 +79,31 @@
                 <tr class="file-row border-b border-gray" onclick="openFile('model.3d', '3d', 'https://eeyiiicptcfnevxkbovy.supabase.co/storage/v1/object/public/ShowcaseFiles/wings_of_freedom-parrot-4697.glb')">
                     <td class="p-3 w-8 text-center"><i class="fas fa-cube text-gray-400"></i></td>
                     <td class="p-3 font-medium">modelis.3d</td>
-                    <td class="p-3 text-gray-400">Judantis 3D modelis.</td>
+                    <td class="p-3 text-gray-400">Pavyzdinis 3D modelis</td>
                     <td class="p-3 text-right text-gray-400">2 days ago</td>
                 </tr>
                 <tr class="file-row border-b border-gray" onclick="openFile('song.mp3', 'audio', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3')">
                     <td class="p-3 w-8 text-center"><i class="fas fa-music text-gray-400"></i></td>
                     <td class="p-3 font-medium">daina.mp3</td>
-                    <td class="p-3 text-gray-400">Garso takelis su daina.</td>
+                    <td class="p-3 text-gray-400">Pavyzdinė daina</td>
                     <td class="p-3 text-right text-gray-400">4 hours ago</td>
                 </tr>
-                <tr class="file-row border-b border-gray" onclick="openFile('video.mp4', 'video', 'https://eeyiiicptcfnevxkbovy.supabase.co/storage/v1/object/public/ShowcaseFiles/problema.webm')">
+                <tr class="file-row border-b border-gray" onclick="openFile('video.webm', 'video', 'https://eeyiiicptcfnevxkbovy.supabase.co/storage/v1/object/public/ShowcaseFiles/problema.webm')">
                     <td class="p-3 w-8 text-center"><i class="fas fa-video text-gray-400"></i></td>
-                    <td class="p-3 font-medium">vaizdo_įrašas.mp4</td>
-                    <td class="p-3 text-gray-400">Application features walkthrough clip</td>
+                    <td class="p-3 font-medium">vaizdoĮrašas.mp4</td>
+                    <td class="p-3 text-gray-400">Pavyzdinis vaizdo įrašas</td>
                     <td class="p-3 text-right text-gray-400">3 hours ago</td>
                 </tr>
                 <tr class="file-row border-b border-gray" onclick="openFile('presentation.pptx', 'pdf', 'https://view.officeapps.live.com/op/embed.aspx?src=https://eeyiiicptcfnevxkbovy.supabase.co/storage/v1/object/public/ShowcaseFiles/nmpp.pptx')">
                     <td class="p-3 w-8 text-center"><i class="fas fa-file-powerpoint text-gray-400"></i></td>
                     <td class="p-3 font-medium">prezentacija.pptx</td>
-                    <td class="p-3 text-gray-400">Projekto prezentacija</td>
+                    <td class="p-3 text-gray-400">Pavyzdinė prezentacija</td>
                     <td class="p-3 text-right text-gray-400">2 hours ago</td>
                 </tr>
                 <tr class="file-row border-b border-gray" onclick="openFile('document.pdf', 'pdf', 'https://docs.google.com/gview?url=https://eeyiiicptcfnevxkbovy.supabase.co/storage/v1/object/public/ShowcaseFiles/dummy.pdf&embedded=true')">
                     <td class="p-3 w-8 text-center"><i class="fas fa-file-pdf text-gray-400"></i></td>
                     <td class="p-3 font-medium">dokumentas.pdf</td>
-                    <td class="p-3 text-gray-400">Sistemos veikimo dokumentacija</td>
+                    <td class="p-3 text-gray-400">Sistemos dokumentacija</td>
                     <td class="p-3 text-right text-gray-400">5 hours ago</td>
                 </tr>
                 <tr class="file-row border-b border-gray" onclick="openFile('index.html', 'code', '')">
