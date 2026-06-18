@@ -531,10 +531,14 @@
             exitEditMode();
         }
 
-        window.onclick = function(event) {
-            const modal = document.getElementById('file-modal');
-            if (event.target == modal) {
-                closeFile();
+   // Locate your window click logic at the bottom of the script and ensure it looks like this:
+window.onclick = function(event) {
+    const modal = document.getElementById('file-modal');
+    if (event.target == modal) {
+        event.stopPropagation(); // Stops the click from passing to background layout elements
+        closeFile();
+    }
+}
             }
         }
     </script>
