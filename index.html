@@ -117,7 +117,7 @@
                     </div>
 
                     <table class="w-full text-sm">
-                        <tr class="file-row border-b border-gray" onclick="openFile('nuotrauka.png', 'image', 'https://eeyiiicptcfnevxkbovy.supabase.co/storage/v1/object/public/ShowcaseFiles/logoFull.png')">
+                        <tr class="file-row border-b border-gray" onclick="openFile('nuotrauka.png', 'image', 'https://eeyiiicptcfnevxkbovy.supabase.co/storage/v1/object/public/ShowcaseFiles/VizitkePriekis.png')">
                             <td class="p-3 w-8 text-center"><i class="far fa-image text-gray-400"></i></td>
                             <td class="p-3 font-medium">nuotrauka.png</td>
                             <td class="p-3 text-gray-400">Pavyzdinė sistemos nuotrauka</td>
@@ -285,9 +285,21 @@
                 <div id="model3d-container" class="w-full h-[60vh] hidden">
                     <model-viewer id="modal-3d" src="" camera-controls auto-rotate shadow-intensity="1" class="w-full h-full focus:outline-none"></model-viewer>
                 </div>
-                <div id="gif-container" class="w-full text-center hidden">
-                    <img id="modal-gif" src="" alt="File Preview" class="max-w-full max-h-[70vh] mx-auto rounded">
-                </div>
+               <div id="gif-container" class="w-full text-center hidden flex flex-col items-center gap-4">
+    <div class="inline-flex items-center bg-[#161b22] border border-gray p-1 rounded-full relative select-none">
+        <button onclick="switchPhotoPerspective('front')" id="btn-toggle-front" class="px-4 py-1.5 text-xs font-semibold rounded-full transition-all duration-200 z-10 bg-blue-600 text-white">
+            Front
+        </button>
+        <button onclick="switchPhotoPerspective('back')" id="btn-toggle-back" class="px-4 py-1.5 text-xs font-semibold rounded-full transition-all duration-200 z-10 text-gray-400 hover:text-white">
+            Back
+        </button>
+    </div>
+
+    <div class="relative max-w-full max-h-[65vh] mx-auto overflow-hidden rounded">
+        <img id="modal-gif" src="" alt="Front Image View" class="max-w-full max-h-[65vh] mx-auto rounded block">
+        <img id="modal-gif-back" src="" alt="Back Image View" class="max-w-full max-h-[65vh] mx-auto rounded hidden">
+    </div>
+</div>
                 <div id="code-view-container" class="w-full hidden">
                     <pre id="modal-code-container" class="w-full text-left"><code id="modal-code" class="language-html"></code></pre>
                 </div>
@@ -367,6 +379,27 @@
                     });
             }
         });
+
+        function switchPhotoPerspective(side) {
+    const frontImg = document.getElementById('modal-gif');
+    const backImg = document.getElementById('modal-gif-back');
+    const btnFront = document.getElementById('btn-toggle-front');
+    const btnBack = document.getElementById('btn-toggle-back');
+
+    if (side === 'front') {
+        frontImg.classList.remove('hidden');
+        backImg.classList.add('hidden');
+        
+        btnFront.className = "px-4 py-1.5 text-xs font-semibold rounded-full transition-all duration-200 z-10 bg-blue-600 text-white";
+        btnBack.className = "px-4 py-1.5 text-xs font-semibold rounded-full transition-all duration-200 z-10 text-gray-400 hover:text-white";
+    } else {
+        frontImg.classList.add('hidden');
+        backImg.classList.remove('hidden');
+        
+        btnFront.className = "px-4 py-1.5 text-xs font-semibold rounded-full transition-all duration-200 z-10 text-gray-400 hover:text-white";
+        btnBack.className = "px-4 py-1.5 text-xs font-semibold rounded-full transition-all duration-200 z-10 bg-blue-600 text-white";
+    }
+}
 
         function escapeHTML(str) {
             return str.replace(/[&<>'"]/g, 
@@ -449,9 +482,21 @@
             } else if (type === 'pdf') {
                 pdfContainer.classList.remove('hidden');
                 modalPdf.src = targetUrl;
-            } else {
+           } else {
                 gifContainer.classList.remove('hidden');
-                modalImg.src = targetUrl;
+                // Set your default Front perspective link
+                modalImg.src = targetUrl; 
+                
+                // Set your secondary Back perspective link here
+                const backImgElement = document.getElementById('modal-gif-back');
+                if (name === 'nuotrauka.png') {
+                    backImgElement.src = "https://eeyiiicptcfnevxkbovy.supabase.co/storage/v1/object/public/ShowcaseFiles/VizitkeGalas.png";
+                } else {
+                    backImgElement.src = targetUrl; // fallback if other image files don't have a back view
+                }
+                
+                // Always reset view back to 'front' when opening a new file
+                switchPhotoPerspective('front');
             }
 
             modal.style.display = 'flex';
